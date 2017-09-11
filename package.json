@@ -1,0 +1,29 @@
+{
+  "name": "gr8-www",
+  "version": "1.0.0",
+  "description": "gr8 website",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"budo index.js -l -P --base -- -t browserify-exec\" \"onchange 'design.js' -- touch index.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "choo": "^6.0.0",
+    "choo-log": "^7.2.1",
+    "fun-component": "^2.0.2",
+    "gr8": "^3.0.0",
+    "insert-css": "^2.0.0",
+    "raf-scroll": "^1.4.0",
+    "ress": "^1.2.2",
+    "scrolltop": "0.0.1",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "browserify-exec": "0.0.2",
+    "budo": "^10.0.4",
+    "concurrently": "^3.5.0",
+    "onchange": "^3.2.1"
+  }
+}
