@@ -1,4 +1,4 @@
-# [gr8.style](https://gr8.style)
+# [gr8.style](http://gr8.style)
 
 Built with [choo](https://github.com/choojs/choo)
 
