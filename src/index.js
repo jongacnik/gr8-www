@@ -1,8 +1,9 @@
 var html = require('choo/html')
 var log = require('choo-log')
 var choo = require('choo')
-var jump = require('jump.js')
+var scroll = require('./helpers/smooth-scroll')
 
+var jumpnav = require('./components/navigation')
 var trackpanel = require('./components/track-panel')
 var cssdecl = require('./components/css-decl')
 
@@ -13,7 +14,7 @@ require('insert-css')(require('browserify-exec')('node src/style.js'))
 var utilities = JSON.parse(require('browserify-exec')('node src/parse-utils.js'))
 
 var app = choo()
-app.use(log())
+// app.use(log())
 app.use(content)
 app.use(navigation)
 app.route('*', mainView)
@@ -69,18 +70,10 @@ function mainView (state, emit) {
     scrollto(e.target.hash, 300)
   }
 
-  function handleChange (e) {
-    e.preventDefault()
-    scrollto(e.target.value, 750)
-  }
-
   function scrollto (hash, duration) {
     emit('scrollstart')
-    jump(hash, {
-      duration: duration,
-      callback: function () {
-        emit('scrollstop')
-      }
+    scroll(document.querySelector(hash), function () {
+      emit('scrollstop')
     })
   }
 
@@ -90,7 +83,7 @@ function mainView (state, emit) {
         
         <div class="c12 x xjb usn psf">
           <div class="p2">
-            <a class="fc-accent" href="#main" onclick=${handleClick}>${state.content.title}</a>
+            <a class="fc-pink" href="#main" onclick=${handleClick}>${state.content.title}</a>
           </div>
           <div class="p2">
             ${state.content.nav.map(item => html`
@@ -100,34 +93,14 @@ function mainView (state, emit) {
         </div>
         
         <div class="c12 x xw">
-          <div class="dn" md="db c6 p2 usn psf b0">
-            ${state.content.sections.map(section => html`
-              <div>
-                <a 
-                  href="#${section}"
-                  class="${state.active === section ? 'active' : ''}"
-                  onclick=${handleClick}
-                >
-                  ${section}
-                </a>
-              </div>
-            `)}
-          </div>
+          ${jumpnav(state.content.sections, state.active, handleClick)}
           <div class="c12 p2 pt10" md="pt2 c6 co6">
             ${trackpanel(sections, handleScroll)}
-            <div class="pb6" md="pb0">
+            <div class="pb10" md="pb0">
               <br><br><br><br><br><br>
               gr8 is developed and iterated-on primarily for use within projects at <a href="http://folderstudio.com" class="cura">Folder Studio</a>.
             </div>
           </div>
-        </div>
-
-        <div class="c12 psf b0 l0 bgc-white" md="dn">
-          <select class="c12 p2 tar psr z1" onchange=${handleChange}>
-            ${state.content.sections.map(section => html`
-              <option ${state.active === section ? 'selected' : ''} value="#${section}">${section}</option>
-            `)}
-          </select>
         </div>
 
       </main>

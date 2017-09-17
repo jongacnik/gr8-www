@@ -1,2 +1,2 @@
 #!/bin/bash
-dat sync dist --no-watch
+surge dist gr8.style

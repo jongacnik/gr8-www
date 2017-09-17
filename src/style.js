@@ -8,6 +8,52 @@ var fonts = {
   ui: '"source-code", "suisse-mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
 }
 
+var colors = {
+  black: '#000',
+  white: '#fff',
+  pink: 'hotpink'
+}
+
+var borderWeights = [0, 1]
+var borders = {}
+borderWeights.forEach(border => {
+  Object.keys(colors).forEach(key => {
+    borders[border + '-' + key] = `${border}px solid ${colors[key]}`
+  })
+})
+
+// add custom utils
+var utils = []
+
+utils.push({
+  prop: 'font-family',
+  join: '-',
+  vals: fonts
+})
+
+utils.push({
+  prop: { fc: 'color' },
+  join: '-',
+  vals: colors
+})
+
+utils.push({
+  prop: { bgc: 'background-color' },
+  join: '-',
+  vals: colors
+})
+
+utils.push({
+  prop: [
+    'border',
+    'border-top',
+    'border-right',
+    'border-bottom',
+    'border-left'
+  ],
+  vals: borders
+})
+
 var imports = `
   @font-face {
     font-family: 'suisse-mono';
@@ -32,19 +78,13 @@ var css = gr8({
   },
   spacing: [0, 2, 6, 10],
   viewport: [60, 100],
-  utils: [
-    {
-      prop: 'font-family',
-      join: '-',
-      vals: fonts
-    }
-  ]
+  utils: utils
 })
 
 var custom = `
   html {
-    /*font-size: 62.5%;*/
     font-size: 1.8vw;
+    height:100%;
   }
 
   @media (min-width: 1024px) {
@@ -55,6 +95,7 @@ var custom = `
 
   body {
     -webkit-font-smoothing: antialiased;
+    min-height:100%;
   }
 
   h1, h2, h3, h4, h5, h6, h7 {
@@ -81,8 +122,16 @@ var custom = `
     height: auto;
   }
 
-  .active:before {
-    content: '— ';
+  @media (min-width: 1024px) {
+    .active:before {
+      content: '— ';
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .active {
+      color: hotpink;
+    }
   }
 
   pre, code {
@@ -123,7 +172,6 @@ var custom = `
   }
 
   .gr8-bracket--open {
-    /*padding-left: 0.65em;*/
     padding-right: 0.65em;
   }
 
@@ -134,14 +182,6 @@ var custom = `
   .highlight .gr8-selector{color:black}
   .highlight .gr8-bracket{color:hotpink}
   .highlight .gr8-declaration{color:hotpink}
-
-  .fc-accent {
-    color: hotpink;
-  }
-
-  .bgc-white {
-    background-color: white;
-  }
 
   .ili:not(:last-child):after {
     content: ', ';
