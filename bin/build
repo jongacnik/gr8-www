@@ -1,0 +1,19 @@
+#!/bin/bash
+mkdir -p dist && \
+  [ -f dist/index.html ] || create-html \
+    -c bundle.css \
+    -s bundle.js \
+    -H '<meta name="viewport" content="width=device-width, initial-scale=1">' | \
+    tr -d '\n' > dist/index.html && \
+  browserify src/index.js \
+    -t browserify-exec \
+    -p [ css-extract -o dist/tmp.css ] \
+    -g unassertify \
+    -g [ babelify --presets [ es2015 ] ] \
+    -g uglifyify \
+    -p bundle-collapser/plugin > dist/bundle.js && \
+  cat dist/tmp.css | \
+    postcss --use autoprefixer | \
+    cssnano --discardComments.removeAll > \
+    dist/bundle.css && rm dist/tmp.css && \
+  cp -r src/assets dist

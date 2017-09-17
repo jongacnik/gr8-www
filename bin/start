@@ -1,0 +1,4 @@
+#!/bin/bash
+concurrently \
+  "budo src/index.js -l -P -d src --base -- -t browserify-exec" \
+  "onchange 'src/style.js' -- touch src/index.js"

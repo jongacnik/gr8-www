@@ -4,9 +4,13 @@
   "description": "gr8 website",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"budo index.js -l -P --base -- -t browserify-exec\" \"onchange 'design.js' -- touch index.js\""
+    "start": "sh bin/start",
+    "build": "sh bin/build",
+    "deploy": "sh bin/build && sh bin/publish"
   },
-  "keywords": [],
+  "keywords": [
+    "gr8"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -15,15 +19,26 @@
     "fun-component": "^2.0.2",
     "gr8": "^3.0.0",
     "insert-css": "^2.0.0",
+    "jump.js": "^1.0.2",
     "raf-scroll": "^1.4.0",
     "ress": "^1.2.2",
-    "scrolltop": "0.0.1",
     "xtend": "^4.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
     "browserify-exec": "0.0.2",
     "budo": "^10.0.4",
+    "bundle-collapser": "^1.3.0",
     "concurrently": "^3.5.0",
-    "onchange": "^3.2.1"
+    "create-html": "^4.0.0",
+    "css-extract": "^1.2.0",
+    "cssnano-cli": "^1.0.5",
+    "onchange": "^3.2.1",
+    "postcss-cli": "^4.1.1",
+    "uglifyify": "^4.0.3",
+    "unassertify": "^2.0.4"
   }
 }

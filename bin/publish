@@ -1,0 +1,2 @@
+#!/bin/bash
+dat sync dist --no-watch
