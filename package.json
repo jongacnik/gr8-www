@@ -19,6 +19,7 @@
     "fun-component": "^2.0.2",
     "gr8": "^3.1.1",
     "insert-css": "^2.0.0",
+    "lilcss": "0.0.0",
     "raf-scroll": "^1.4.0",
     "ress": "^1.2.2",
     "tweezer.js": "^1.4.0",

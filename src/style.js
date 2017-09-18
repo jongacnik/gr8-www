@@ -1,5 +1,6 @@
 var fs = require('fs')
 var gr8 = require('gr8')
+var lilcss = require('lilcss')
 var ress = fs.readFileSync('node_modules/ress/ress.css', 'utf8')
 
 var fonts = {
@@ -188,4 +189,9 @@ var custom = `
   }
 `
 
-process.stdout.write(ress + imports + css + custom)
+var lilgr8 = lilcss(css, [
+  'src/index.js',
+  'src/components/*.js'
+])
+
+process.stdout.write(ress + imports + lilgr8 + custom)
