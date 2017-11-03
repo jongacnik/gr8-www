@@ -83,7 +83,7 @@ function mainView (state, emit) {
         
         <div class="c12 x xjb usn psf">
           <div class="p2">
-            <a class="fc-pink" href="#main" onclick=${handleClick}>${state.content.title}</a>
+            <a class="fc-accent" href="#main" onclick=${handleClick}>${state.content.title}</a>
           </div>
           <div class="p2">
             ${state.content.nav.map(item => html`

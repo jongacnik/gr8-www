@@ -12,7 +12,7 @@ var fonts = {
 var colors = {
   black: '#000',
   white: '#fff',
-  pink: 'hotpink'
+  accent: 'deeppink'
 }
 
 var borderWeights = [0, 1]
@@ -131,7 +131,7 @@ var custom = `
 
   @media (max-width: 1023px) {
     .active {
-      color: hotpink;
+      color: ${colors.accent};
     }
   }
 
@@ -181,8 +181,8 @@ var custom = `
   .highlight .gr8-value{color:#6f42c1}*/
 
   .highlight .gr8-selector{color:black}
-  .highlight .gr8-bracket{color:hotpink}
-  .highlight .gr8-declaration{color:hotpink}
+  .highlight .gr8-bracket{color:${colors.accent}}
+  .highlight .gr8-declaration{color:${colors.accent}}
 
   .ili:not(:last-child):after {
     content: ', ';
