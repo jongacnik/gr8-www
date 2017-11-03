@@ -18,7 +18,7 @@ module.exports = component({
   },
   render (sections, active, handleClick) {
     return html`
-      <div class="psf b0 l0 w100 wsnw oys bgc-white bt1-accent p2 z4" md="usn c6 bt0-accent wsn">
+      <div class="psf b0 l0 w100 wsnw oys bgc-white bt2-accent p2 z4" sm="bt1-accent" md="usn c6 bt0-accent wsn">
         ${sections.map(section => html`
           <div class="di" md="db">
             <a 

@@ -78,7 +78,7 @@ function mainView (state, emit) {
   }
 
   return html`
-    <body class="ff-mono fs1 highlight">
+    <body class="ff-mono fwb fs1 highlight" sm="fwn">
       <main id="main">
         
         <div class="c12 x xjb usn psf">

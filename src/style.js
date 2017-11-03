@@ -15,7 +15,7 @@ var colors = {
   accent: 'deeppink'
 }
 
-var borderWeights = [0, 1]
+var borderWeights = [0, 1, 2]
 var borders = {}
 borderWeights.forEach(border => {
   Object.keys(colors).forEach(key => {
@@ -61,6 +61,14 @@ var imports = `
     src: url('./assets/fonts/SuisseIntlMono-Thin.woff2') format('woff2'),
          url('./assets/fonts/SuisseIntlMono-Thin.woff') format('woff');
     font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'suisse-mono';
+    src: url('./assets/fonts/SuisseIntlMono.woff2') format('woff2'),
+         url('./assets/fonts/SuisseIntlMono.woff') format('woff');
+    font-weight: bold;
     font-style: normal;
   }
 
