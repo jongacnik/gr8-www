@@ -1,2 +1,2 @@
 #!/bin/bash
-surge dist gr8.style
+surge docs gr8.style
